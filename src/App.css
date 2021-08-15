@@ -1,38 +1,47 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.button{
+position: relative;
+ width: 300px;
+ height: 111px;
+ font-size: calc(10px + 1vw);
+ background-color: rgb(139, 39, 209);
+ border: 2px solid rgb(70, 1, 119);
+ transition: transform 0.5s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  border: inherit;
+  transition: inherit;
+  background-color: rgb(139, 39, 209);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button::before {
+  height: 1rem;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  transform-origin: top left;
+  transform: skewX(45deg) scaleY(var(--s, 0));
 }
 
-.App-link {
-  color: #61dafb;
+.button::after {
+  width: 1rem;
+  left: 100%;
+  top: -1px;
+  bottom: 0;
+  border-bottom:none;
+  transform-origin: bottom left;
+  transform: skewY(45deg) scaleX(var(--s, 0));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button:hover {
+  transform: translate(-0.5rem, -0.5rem);
+  --s: 1;
 }
